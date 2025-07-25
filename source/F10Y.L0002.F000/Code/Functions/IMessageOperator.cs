@@ -16,7 +16,7 @@ namespace F10Y.L0002.F000
         /// <remarks>
         /// Message format discovered using R5T.S0111.V000.Tests.AreEqual_ForIntegers().
         /// </remarks>
-        public string Get_AreEqual_FailedMessage(
+        public string Get_AreEqual_FailedExceptionMessage(
             object expected,
             object actual)
         {

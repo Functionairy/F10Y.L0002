@@ -1,7 +1,9 @@
 using System;
 
 using F10Y.T0002;
+using F10Y.T0011;
 
+using Expectations = F10Y.L0002.T000;
 using Framework = System.Collections.Generic;
 using Simplified = F10Y.L0003;
 
@@ -18,48 +20,34 @@ namespace F10Y.L0002
     public partial interface IAssertion :
         F000.IAssertion
     {
-        public void Are_Equal<TOutput>(
-            IExpectationOutput<TOutput> expectedValue,
-            TOutput encounteredValue,
-            Framework.IEqualityComparer<TOutput> equalityComparer)
-        {
-            this.Are_Equal(
-                expectedValue.Output,
-                encounteredValue,
-                equalityComparer);
-        }
+#pragma warning disable IDE1006 // Naming Styles
+
+        [Ignore]
+        public Implementations.IAssertion _Implementations => Implementations.Assertion.Instance;
+
+#pragma warning restore IDE1006 // Naming Styles
+
 
         public void Are_Equal<TOutput>(
-            IExpectationOutput<TOutput> expectedValue,
+            Expectations.IExpectationOutput<TOutput> expectation,
             TOutput encounteredValue)
         {
             this.Are_Equal(
-                expectedValue.Output,
-                encounteredValue);
+                expectation.Output_Expected,
+                encounteredValue,
+                expectation.Output_EqualityComparer);
         }
 
+        /// <summary>
+        /// Determines if two instances are equal using the provided simplified equality comparer.
+        /// </summary>
         public void Are_Equal<T>(
             T expected,
             T actual,
             Simplified.IEqualityComparer<T> equalityComparer)
-        {
-            var equalityComparer_Framework = Instances.EqualityComparerOperator.From(equalityComparer);
-
-            this.Are_Equal(
+            => _Implementations.Are_Equal_ReimplementException(
                 expected,
                 actual,
-                equalityComparer_Framework);
-        }
-
-        public void Are_Equal<TOutput>(
-            IExpectationOutput<TOutput> expectedValue,
-            TOutput encounteredValue,
-            Simplified.IEqualityComparer<TOutput> equalityComparer)
-        {
-            this.Are_Equal(
-                expectedValue.Output,
-                encounteredValue,
                 equalityComparer);
-        }
     }
 }

@@ -4,7 +4,7 @@ using F10Y.L0003;
 using F10Y.T0004;
 
 
-namespace F10Y.L0002
+namespace F10Y.L0002.T000
 {
     /// <summary>
     /// Represents an just the output portion of an expectation, that ties together an expected output and the means to equate encounted output instances against the expected output instance.
@@ -16,7 +16,7 @@ namespace F10Y.L0002
     [DataTypeMarker, UtilityTypeMarker]
     public interface IExpectationOutput<TOutput>
     {
-        TOutput Output { get; set; }
-        IEqualityComparer<TOutput> OutputEqualityComparer { get; set; }
+        TOutput Output_Expected { get; set; }
+        IEqualityComparer<TOutput> Output_EqualityComparer { get; set; }
     }
 }

@@ -19,6 +19,10 @@ namespace F10Y.L0002.F000
     [FunctionsMarker]
     public partial interface IAssertion
     {
+        /// <summary>
+        /// Calls <method><see cref="Assert.AreEqual{T}(T, T, IEqualityComparer{T})"/></method>.
+        /// </summary>
+        /// <inheritdoc cref="Assert.AreEqual{T}(T, T, IEqualityComparer{T})" path="/exception"/>
         public void Are_Equal<T>(
             T expected,
             T actual,
@@ -106,10 +110,10 @@ namespace F10Y.L0002.F000
             Assert.IsNull(value);
         }
 
-        public void ThrowsException_Synchronous<TException>(Action action)
+        public void ThrowsExactException_Synchronous<TException>(Action action)
             where TException : Exception
         {
-            Assert.ThrowsException<TException>(action);
+            Assert.ThrowsExactly<TException>(action);
         }
 
         public void ThrowsException_Synchronous<TException>(
@@ -160,20 +164,20 @@ namespace F10Y.L0002.F000
             }
         }
 
-        public async Task ThrowsException_Asynchronous<TException>(
+        public async Task ThrowsExactException_Asynchronous<TException>(
             Func<Task> action)
             where TException : Exception
         {
-            await Assert.ThrowsExceptionAsync<TException>(action);
+            await Assert.ThrowsExactlyAsync<TException>(action);
         }
 
         /// <summary>
-        /// Chooses <see cref="ThrowsException_Synchronous{TException}(Action)"/> as the default.
+        /// Chooses <see cref="ThrowsExactException_Synchronous{TException}(Action)"/> as the default.
         /// </summary>
         public void ThrowsException<TException>(Action action)
             where TException : Exception
         {
-            this.ThrowsException_Synchronous<TException>(action);
+            this.ThrowsExactException_Synchronous<TException>(action);
         }
 
         /// <summary>

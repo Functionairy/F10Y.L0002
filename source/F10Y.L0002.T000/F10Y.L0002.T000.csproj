@@ -8,14 +8,13 @@
     <Version>1.0.0</Version>
     <Authors>DCoats</Authors>
     <Company>Functionairy</Company>
-    <Copyright>Copyright (c) Functionairy 2025</Copyright>
-    <Description>Testing infrastructure library.</Description>
+    <Copyright>Copyright © Functionairy 2025</Copyright>
+    <Description>Testing infrastructure types library.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <RepositoryUrl>https://github.com/Functionairy/F10Y.L0002.git</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\F10Y.L0002.F000\F10Y.L0002.F000.csproj" />
-    <ProjectReference Include="..\F10Y.L0002.T000\F10Y.L0002.T000.csproj" />
+    <ProjectReference Include="..\..\..\F10Y.L0000\source\F10Y.L0000\F10Y.L0000.csproj" />
+    <ProjectReference Include="..\..\..\F10Y.L0003\source\F10Y.L0003\F10Y.L0003.csproj" />
   </ItemGroup>
 </Project>

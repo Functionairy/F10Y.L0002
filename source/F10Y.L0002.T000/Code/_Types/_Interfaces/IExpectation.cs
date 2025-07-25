@@ -3,7 +3,7 @@
 using F10Y.T0004;
 
 
-namespace F10Y.L0002
+namespace F10Y.L0002.T000
 {
     /// <summary>
     /// Represents an expectation tying together an input, an expected output, and the means to equate encounted output instances against the expected output instance.

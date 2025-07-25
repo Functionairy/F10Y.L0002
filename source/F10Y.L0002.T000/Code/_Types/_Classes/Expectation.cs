@@ -4,7 +4,7 @@ using F10Y.L0003;
 using F10Y.T0004;
 
 
-namespace F10Y.L0002
+namespace F10Y.L0002.T000
 {
     /// <inheritdoc cref="IExpectation{TInput, TOutput}"/>
     [DataTypeMarker, UtilityTypeMarker]
@@ -26,13 +26,13 @@ namespace F10Y.L0002
 
 
         public TInput Input { get; set; }
-        public TOutput Output { get; set; }
-        public IEqualityComparer<TOutput> OutputEqualityComparer { get; set; }
+        public TOutput Output_Expected { get; set; }
+        public IEqualityComparer<TOutput> Output_EqualityComparer { get; set; }
 
 
         public override string ToString()
         {
-            var representation = $"{this.Output}\n- expected from -\n\t{this.Input}";
+            var representation = $"{this.Output_Expected}\n- expected from -\n\t{this.Input}";
             return representation;
         }
     }
@@ -51,20 +51,20 @@ namespace F10Y.L0002
 
         public TInput1 Input1 { get; set; }
         public TInput2 Input2 { get; set; }
-        public TOutput Output { get; set; }
-        public IEqualityComparer<TOutput> OutputEqualityComparer { get; set; }
+        public TOutput Output_Expected { get; set; }
+        public IEqualityComparer<TOutput> Output_EqualityComparer { get; set; }
 
 
         public override string ToString()
         {
-            var representation = $"{this.Output}\n- expected from -\n\t{this.Input1}\n\t{this.Input2}";
+            var representation = $"{this.Output_Expected}\n- expected from -\n\t{this.Input1}\n\t{this.Input2}";
             return representation;
         }
     }
 
 
     /// <summary>
-    /// <para>Use <see cref="IExpectationOperator"/> instead.</para>
+    /// <para>Use of this class is discouraged. Use exception operator methods instead.</para>
     /// A static class for expection methods.
     /// Also helps to provide a non-type parametered class for use in documentation comments related to expectations.
     /// </summary>
@@ -79,8 +79,8 @@ namespace F10Y.L0002
             var expectation = new Expectation<TInput, TOutput>
             {
                 Input = input,
-                Output = output,
-                OutputEqualityComparer = outputEqualityComparer,
+                Output_Expected = output,
+                Output_EqualityComparer = outputEqualityComparer,
             };
 
             return expectation;
